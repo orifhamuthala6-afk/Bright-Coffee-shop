@@ -23,6 +23,7 @@ coffee.dtypes
 
 # COMMAND ----------
 
+# DBTITLE 1,Changing the data type of unit price from string to float
 coffee.astype({"unit_price": float})
 
 # COMMAND ----------
@@ -30,6 +31,17 @@ coffee.astype({"unit_price": float})
 # DBTITLE 1,Calculating the sale price
 coffee['Total sale']=coffee['unit_price']*coffee['transaction_qty']
 display(coffee['Total sale'])
+
+# COMMAND ----------
+
+coffee['Total sale']=coffee['unit_price']*coffee['transaction_qty']
+coffee.dtypes
+
+# COMMAND ----------
+
+# DBTITLE 1,Converting Total sale to float
+coffee = coffee.astype({"Total sale": float})
+
 
 # COMMAND ----------
 
@@ -48,5 +60,4 @@ coffee.groupby('product_type')['Total sale'].sum()
 
 # COMMAND ----------
 
-# DBTITLE 1,which month performed the most??
-coffee['transaction_date']
+coffee.describe()
